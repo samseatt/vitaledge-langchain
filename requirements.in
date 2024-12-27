@@ -1,0 +1,51 @@
+# File: requirements.in
+# Project: VitalEdge LangChain
+# Description: Defines the dependencies for VitalEdge LangChain. 
+#              Use pip-compile to generate a locked requirements.txt file.
+
+# Author: Sam Seatt
+# Date: [Insert Date]
+
+# Notes:
+# - Run `pip-compile requirements.in` to generate requirements.txt.
+# - Ensure compatibility of pinned versions, particularly for numpy, to 
+#   avoid conflicts with FAISS and LangChain.
+
+# FastAPI for API routing
+fastapi
+
+# Uvicorn for ASGI server
+uvicorn
+
+# LangChain for orchestration
+langchain
+langchain-community
+
+# FAISS for in-memory vector database (used in RAG)
+faiss-cpu
+
+# HTTP client for calling microservices
+httpx
+
+# Pydantic for data validation
+pydantic
+
+# PostgreSQL database access (if needed)
+asyncpg
+
+# OpenAI for GPT interaction
+openai
+
+# Utilities for asynchronous tasks
+aiofiles
+
+# Logging and debugging
+python-dotenv
+loguru
+
+# Testing libraries
+pytest
+pytest-asyncio
+
+# Numpy for vector processing (Pinned)
+numpy<2,>=1.22.4
