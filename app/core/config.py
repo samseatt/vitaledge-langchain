@@ -6,7 +6,7 @@ Description: Centralized configuration management for VitalEdge LangChain.
              and other global settings.
 
 Author: Sam Seatt
-Date: [Insert Date]
+Date: December 7, 2024
 
 Features:
 - Provides a `Config` class for accessing environment variables.

@@ -6,8 +6,11 @@ Description: Core orchestrator module for the Retrieval-Augmented Generation (RA
              between the VectorDB, Embeddings, and LLM microservices to enable 
              contextually-aware response generation.
 
+             NOTE: This module does not use a LangChain but uses a simpler, direct
+             approach that is less extensible than the LangChain based flows.
+
 Author: Sam Seatt
-Date: [Insert Date]
+Date: December 7, 2024
 
 Features:
 - Executes RAG workflows by integrating multiple microservices.
@@ -32,6 +35,7 @@ Notes:
   and their endpoints are correctly configured in the `.env` file.
 """
 
+from app.services.datalake_service import DatalakeService
 from app.services.embeddings_service import EmbeddingsService
 from app.services.vectordb_service import VectorDBService
 from app.services.llm_service import LLMService
@@ -43,6 +47,7 @@ class RAGOrchestrator:
     """
 
     def __init__(self):
+        self.datalake_service = DatalakeService
         self.embeddings_service = EmbeddingsService()
         self.vectordb_service = VectorDBService()
         self.llm_service = LLMService()
@@ -52,6 +57,12 @@ class RAGOrchestrator:
         Executes the RAG workflow.
         """
         print(f"RAGOrchestrator.run called with query: {query}")
+
+        # Step 0: Get data from Datalake
+        print(f"@@@@@@@@@@@@@@@@@ Reading variants")
+        variants = await self.datalake_service.search_variants(103)
+        print(f"@@@@@@@@@@@@@@@@@Variants read: {variants}")
+
         # Step 1: Generate query embeddings
         embeddings = await self.embeddings_service.generate_embedding(query)
 

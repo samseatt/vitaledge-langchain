@@ -6,7 +6,7 @@ Description: Contains the core RAG (Retrieval-Augmented Generation) flow
              and LLM microservices to generate insights.
 
 Author: Sam Seatt
-Date: [Insert Date]
+Date: December 7, 2024
 
 Features:
 - Retrieves contextually relevant documents from VectorDB.
